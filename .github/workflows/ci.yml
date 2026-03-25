@@ -142,8 +142,7 @@ jobs:
       - name: Setup Database
         env:
           RAILS_ENV: test
-          DATABASE_URL: postgres://postgres@localhost:5432/task_app_test
-          PGPASSWORD: ''
+          DATABASE_URL: postgres://vivek:@localhost:5432/task_app_test
         run: bin/rails db:create db:migrate
 
       - name: Run System Tests
