@@ -143,7 +143,12 @@ jobs:
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://vivek:@localhost:5432/task_app_test
-        run: bin/rails db:create db:migrate
+        run: |
+          sudo apt-get -yqq install libpq-dev
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rails db:prepare
+          bundle exec rails test
 
       - name: Run System Tests
         env:
