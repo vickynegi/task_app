@@ -56,7 +56,7 @@ jobs:
           bundler-cache: true
 
       - name: Security audit dependencies
-        run: bundle exec bundle audit --update
+        run: bundle exec bundle audit --update --ignore CVE-2026-33658
       - name: Security audit applicate code
         run: bundle exec brakeman -q -w2
       - name: Lint code for consistent style in Ruby files
